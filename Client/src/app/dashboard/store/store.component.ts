@@ -51,9 +51,9 @@ export class StoreComponent implements OnInit {
   }
 
 
-  createProduct(dproduct: any): void {
+  createProduct(dProduct: any): void {
     var self = this;
-    this.storeService.createProduct(dproduct).subscribe(() => console.log('Product Created!'));
+    this.storeService.createProduct(dProduct).subscribe(() => console.log('Product Created!'));
     this.getProducts();
   }
 
