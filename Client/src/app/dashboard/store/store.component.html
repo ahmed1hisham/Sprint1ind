@@ -1,0 +1,53 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<nb-card>
+  <nb-card-header>Welcome to the store!</nb-card-header>
+  
+  <nb-card-body>
+    
+    <div id="divaya" *ngIf="divaya">
+      Name: <input #tName required/>
+      Price: <input #tPrice required/>
+      Seller: <input #tSeller required/>
+      <button class = "myButton" (click) = "sheelDivaya()" (click) = "createProduct({name: tName.value, price: tPrice.value, sellerName: tSeller.value})">Done</button>
+      <button class = "myButton" (click) = "sheelDivaya()">Cancel</button>
+
+    </div>
+
+    <div id="divaya2" *ngIf="divaya2">
+      Name: <input #tName [(ngModel)]="xName" required/>
+      Price: <input #tPrice [(ngModel)]="xPrice" required/>
+      Seller: <input #tSeller [(ngModel)]="xSeller" required/>
+      <button class = "myButton" (click) = "sheelDivaya2()" (click) = "updateProduct({name: tName.value, price: tPrice.value, sellerName: tSeller.value})">Done</button>
+      <button class = "myButton" (click) = "sheelDivaya2()">Cancel</button>
+    </div>
+
+    <span id="add"><button class = "myButton" (click) = "showDivaya()"><i class="fa fa-plus"></i></button></span>
+
+    
+
+  <table class="table table-hover table-bordered table-striped">
+    <tr>
+      <th class="text-center">Name</th>
+      <th class="text-center">Price</th>
+      <th class="text-center">CreatedAt</th>
+      <th class="text-center">UpdatedAt</th>
+      <th class="text-center">Seller</th>
+      <th class="text-center"></th>
+    </tr>
+    <tr *ngFor="let product of tableData">
+      <!-- The products that are not in edit mode -->
+      <td class="text-center">{{product.name}}</td>
+      <td class="text-center">{{product.price|currency}}</td>
+      <td class="text-center">{{product.createdAt| date}}</td>
+      <td class="text-center">{{product.updatedAt| date}}</td>
+      <td class="text-center">{{product.sellerName}}</td>
+      <button class="myButton" (click) = "showDivaya2(product)"><i class="fa fa-edit
+        "></i></button>
+      <button class="myButton" (click) = "deleteProduct(product)"><i class="fa fa-trash"></i></button>
+    </tr>
+  </table>
+  </nb-card-body>
+  <nb-card-footer></nb-card-footer>
+  </nb-card>
+  
